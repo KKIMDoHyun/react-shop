@@ -66,38 +66,29 @@ function App() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      {/* <div className='jumbotron'>
-        <h1>20% Season Off</h1>
-        <p>
-          This is a Simeple
-        </p>
-        <p>
-          <Button variant="primary">Lean More</Button>
-        </p>
-      </div> */}
 
       <div className='container'>
         <div className='row'>
-          <div className='col-md-4'>
-            <img src='https://codingapple1.github.io/shop/shoes1.jpg' width="100%" alt='first'></img>
-            <h4>{ shoes[0].title }</h4>
-            <p>{ shoes[0].content }</p>
-          </div>
-          <div className='col-md-4'>
-            <img src='https://codingapple1.github.io/shop/shoes2.jpg' width="100%" alt='second'></img>
-            <h4>{ shoes[1].title }</h4>
-            <p>{ shoes[1].content }</p>
-          </div>
-          <div className='col-md-4'>
-            <img src='https://codingapple1.github.io/shop/shoes3.jpg' width="100%" alt='third'></img>
-            <h4>{ shoes[2].title}</h4>
-            <p>{ shoes[2].content }</p>
-          </div>
+          {
+            shoes.map((shoes, i) => {
+              return(
+                <ShoesList shoes={shoes} index={i} key={i}></ShoesList> 
+              )
+            })
+          }
         </div>
       </div>
     </div>
-    
   );
 }
 
+function ShoesList(props) {
+  return(
+    <div className='col-md-4'>
+      <img src={`https://codingapple1.github.io/shop/shoes${props.index+1}.jpg`} width="100%" alt='first'></img>
+      <h4>{ props.shoes.title }</h4>
+      <p>{ props.shoes.content } & { props.shoes.price }</p>
+    </div>
+  )
+}
 export default App;
